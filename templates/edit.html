@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Todo</title>
+</head>
+<body>
+    <h1>Edit Todo</h1>
+    <form action="{{url_for('edit_todo'}}" method="POST">
+        <p>Todo: {{todo.title}}</p>
+        <p>Current Time: {{todo.time}}</p>
+            <input hidden="hidden" name="id" value="{{todo.id}}">
+        <input name='time' type="text" placeholder="New Time">
+        <button type="submit">Update Time</button>
+    </form>
+</body>
+</html>
