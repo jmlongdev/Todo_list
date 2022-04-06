@@ -1,0 +1,46 @@
+body{
+background-color:lightgray;
+}
+
+.card{
+margin:auto;
+width: 30%;
+
+}
+
+.table{
+width: 50%;
+margin: auto;
+}
+
+h1{
+text-align: center;
+padding-bottom: 25px;
+}
+
+#wrapper{
+display: flex ;
+margin-bottom: 3%;
+align-items: center ;
+justify-content: center ;
+}
+
+.edit_wrapper{
+display: flex ;
+margin-bottom: 3% ;
+align-items: center ;
+justify-content: center ;
+}
+
+#add_button{
+    margin-top:5em;
+}
+
+.edit_body{
+text-align: center ;
+}
+
+.todo_box{
+text-align:center;
+}
+

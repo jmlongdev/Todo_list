@@ -1,17 +1,33 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Todo</title>
-</head>
-<body>
+{% extends "bootstrap/base.html" %}
+{% block title %} Edit Todo {% endblock %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="static/css/styles.css">
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+</div>
+{% endblock %}
+
+{% block content%}
+<body class="edit_body">
     <h1>Edit Todo</h1>
-    <form action="{{url_for('edit_todo'}}" method="POST">
-        <p>Todo: {{todo.title}}</p>
-        <p>Current Time: {{todo.time}}</p>
-            <input hidden="hidden" name="id" value="{{todo.id}}">
-        <input name='time' type="text" placeholder="New Time">
-        <button type="submit">Update Time</button>
+    <form action="{{url_for('edit_todo')}}" method="POST">
+        <div class="edit_wrapper">
+        <label>Todo: {{selected_todo.title}}</label>
+        <input hidden="hidden" name="id" value="{{selected_todo.id}}">
+        </div>
+        <div class="edit_wrapper">
+        <input name='title' type="text" autofocus value="{{selected_todo.title}}">
+        </div>
+        <div id="wrapper">
+            <button type="submit" data-target="#edit_todo">Update Todo</button>
+        </div>
     </form>
 </body>
-</html>
+{% endblock %}
+
+
+
