@@ -6,19 +6,12 @@
 <link rel="stylesheet" href="static/css/styles.css">
 {% endblock %}
 
-{% block navbar %}
-<div class="navbar navbar-fixed-top">
-
-</div>
-{% endblock %}
-
 {% block content%}
 <div class="todo_box">
     <h1>Todo List</h1>
     {% if todos == [] %}
     <p>Todo List is empty</p>
     {% else %}
-    <div class="">
         <table class="table bg-primary ">
             <thead>
                 <tr>
@@ -39,7 +32,6 @@
             </tbody>
             {% endfor %}
         </table>
-    </div>
     {% endif %}
 
     <button type="button" class="btn btn-primary" id="add_button" data-toggle="modal" data-target="#add_todo">
@@ -69,8 +61,6 @@
     </div>
 </div>
 
-
-
 <div class="modal fade" id="edit_todo" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -80,9 +70,6 @@
         </div>
     </div>
 </div>
-
-
-
 
 {% endblock %}
 

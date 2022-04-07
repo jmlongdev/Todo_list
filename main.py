@@ -18,7 +18,6 @@ class Todo(db.Model):
     title = db.Column(db.String(250), nullable=False)
 
 
-
 db.create_all()
 
 
