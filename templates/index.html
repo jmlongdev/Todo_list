@@ -1,10 +1,5 @@
-{% extends "bootstrap/base.html" %}
+{% extends 'base.html' %}
 {% block title %} Todo List {% endblock %}
-
-{% block styles %}
-{{ super() }}
-<link rel="stylesheet" href="static/css/styles.css">
-{% endblock %}
 
 {% block content%}
 <div class="todo_box">
@@ -12,67 +7,52 @@
     {% if todos == [] %}
     <p>Todo List is empty</p>
     {% else %}
-        <table class="table bg-primary ">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col" style="text-align:center;">Todo</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            {% for todo in todos %}
-            <tbody>
-                <tr>
-                    <th scope="row">{{loop.index}}</th>
-                    <td>{{todo.title}}</td>
-                    <td><a href="{{url_for('edit_todo', id=todo.id)}}" data-toggle="modal" class="btn btn-info" data-target="#edit_todo" role="button">Edit</a></td>
-                    <td><a href="{{url_for('delete_todo', id=todo.id)}}" class="btn btn-danger" role="button">Delete</a></td>
-                </tr>
-            </tbody>
-            {% endfor %}
-        </table>
+    <table class="table bg-secondary">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col" style="text-align:center;">Todo</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        {% for todo in todos %}
+        <tbody>
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{todo.title}}</td>
+            <td><a href="{{url_for('delete_todo', id=todo.id)}}" class="btn btn-danger" role="button">Delete</a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
     {% endif %}
-
-    <button type="button" class="btn btn-primary" id="add_button" data-toggle="modal" data-target="#add_todo">
-        Add Todo
-    </button>
-</div>
-
-<div class="modal fade" id="add_todo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Todo</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{url_for('add')}}" method="POST">
-                    <label>Todo: </label>
-                    <input name='title'  type="text">
-                    <button type="submit" class="btn btn-primary">Add</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </form>
-            </div>
-            <div class="modal-footer"></div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="edit_todo" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header"></div>
-            <div class="modal-body"></div>
-            <div class="modal-footer"></div>
-        </div>
-    </div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add Todo</button>
 </div>
 
 {% endblock %}
 
-
-
+{% block modal %}
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="add-todo">Add Todo</h5>
+            </div>
+            <div class="modal-body">
+                <h1>Add Todo</h1>
+                <form action="{{url_for('add')}}" method="POST">
+                    <label>Todo: </label>
+                    <input name='title' type="text">
+                    <button type="submit">Add Todo</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
